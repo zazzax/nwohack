@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{2745a7a0-0edd-4f4d-a970-0ae366e7832a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{7b08a6ee-3898-4e8d-b464-a6ae8068c377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Main">
+      <UniqueIdentifier>{5e6e30c8-7c5c-49e6-97cd-32b8919573a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Misc">
+      <UniqueIdentifier>{555594d3-2af3-4638-b513-1bc83e4e6013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Main">
+      <UniqueIdentifier>{acebe49a-2d57-4353-8ef8-162dec9ccf77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc">
+      <UniqueIdentifier>{c561d831-5e77-414d-9dcb-c8cb8ca20e70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{112a2dbf-4422-4261-9e83-596c47b55bb0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\Main\DllMain.h">
+      <Filter>Header\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Misc\stdafx.h">
+      <Filter>Header\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Main\Functions.h">
+      <Filter>Header\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main\DllMain.cpp">
+      <Filter>Source\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Misc\stdafx.cpp">
+      <Filter>Source\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main\Functions.cpp">
+      <Filter>Source\Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\Resource.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
