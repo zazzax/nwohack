@@ -8,7 +8,7 @@ namespace Hack
         public static SystemProcess CurrentProcess;
 
         /// <summary>
-        /// Initializes global variables for use with NWOHack.
+        /// Initializes global variables.
         /// </summary>
         public static void Initialize()
         {

@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="Imports\Constants.cs" />
     <Compile Include="Imports\WinAPI.cs" />
+    <Compile Include="Main\Detours.cs" />
     <Compile Include="Main\Offsets.cs" />
     <Compile Include="Main\Process.cs" />
     <Compile Include="Main\Program.cs" />
+    <Compile Include="Manager\Entity.cs" />
+    <Compile Include="Manager\Manager.cs" />
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Delegates.cs" />
     <Compile Include="Main\Functions.cs" />
