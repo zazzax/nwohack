@@ -6,6 +6,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Host", "Host\Host.vcxproj", "{F740D3BD-796D-4256-BAE0-7D6D73C3D778}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{2F4EF97D-E899-41B7-80ED-1D785D44ED8B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBC76D10-69F9-4ABA-8B83-79635949976E} = {BBC76D10-69F9-4ABA-8B83-79635949976E}
+		{F740D3BD-796D-4256-BAE0-7D6D73C3D778} = {F740D3BD-796D-4256-BAE0-7D6D73C3D778}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

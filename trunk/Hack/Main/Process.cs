@@ -64,11 +64,11 @@ namespace Hack
         /// </summary>
         public static byte[] ReadBuffer( DWORD_PTR dwAddress, int nLength )
         {
-            List<byte> bytes = new List<byte>( nLength );
+            List<byte> liBuffer = new List<byte>( nLength );
             for( int i = 0; i < nLength; i++ )
-                bytes.Add( Read<byte>( dwAddress + (DWORD_PTR) i ) );
+                liBuffer.Add( Read<byte>( dwAddress + (DWORD_PTR) i ) );
 
-            return bytes.ToArray();
+            return liBuffer.ToArray();
         }
 
         /// <summary>
@@ -82,13 +82,13 @@ namespace Hack
             if( dwAddresses.Length == 1 )
                 return ReadInternal<T>( dwAddresses[0] );
 
-            DWORD_PTR last = 0;
+            DWORD_PTR dwLast = 0;
             for( int i = 0; i < dwAddresses.Length; i++ )
             {
                 if( i == dwAddresses.Length - 1 )
-                    return ReadInternal<T>( dwAddresses[i] + last );
+                    return ReadInternal<T>( dwAddresses[i] + dwLast );
 
-                last = ReadInternal<DWORD_PTR>( last + dwAddresses[i] );
+                dwLast = ReadInternal<DWORD_PTR>( dwLast + dwAddresses[i] );
             }
 
             // Should never get to this point.
@@ -326,5 +326,62 @@ namespace Hack
             return ( *__vmt )[nVTableIndex];
         }
 
+        public class Detour
+        {
+            private Delegate OriginalFunction_t, NewFunction_t;
+            private DWORD_PTR OriginalFunctionAddress, NewFunctionAddress;
+            private List<byte> OriginalBytes, NewBytes;
+
+            public bool IsApplied { get; private set; }
+
+            /// <summary>
+            /// Creates a detour which may be applied to functions, to have them redirect to other specified functions.
+            /// </summary>
+            public Detour( Delegate tOriginalFunction, Delegate tNewFunction )
+            {
+                OriginalFunction_t = tOriginalFunction;
+                OriginalFunctionAddress = (DWORD_PTR) Marshal.GetFunctionPointerForDelegate( OriginalFunction_t );
+                OriginalBytes = new List<byte>( ReadBuffer( OriginalFunctionAddress, 2 + sizeof( DWORD_PTR ) ) );
+
+                NewFunction_t = tNewFunction;
+                NewFunctionAddress = (DWORD_PTR) Marshal.GetFunctionPointerForDelegate( NewFunction_t );
+                NewBytes = new List<byte>( 2 + sizeof( DWORD_PTR ) );
+                NewBytes.Add( 0x68 );
+                NewBytes.AddRange( BitConverter.GetBytes( NewFunctionAddress ) );
+                NewBytes.Add( 0xC3 );
+
+                IsApplied = false;
+            }
+
+            /// <summary>
+            /// Applies the detour.
+            /// </summary>
+            public void Apply()
+            {
+                WriteBufferProtected( OriginalFunctionAddress, NewBytes.ToArray() );
+                IsApplied = true;
+            }
+
+            /// <summary>
+            /// Removes the detour.
+            /// </summary>
+            public void Remove()
+            {
+                WriteBufferProtected( OriginalFunctionAddress, OriginalBytes.ToArray() );
+                IsApplied = false;
+            }
+
+            /// <summary>
+            /// Calls the original, unaltered function.
+            /// </summary>
+            public T CallOriginal<T>( params object[] oArgs )
+            {
+                Remove();
+                object tResult = OriginalFunction_t.DynamicInvoke( oArgs );
+                Apply();
+                return (T) tResult;
+            }
+
+        }
     }
 }

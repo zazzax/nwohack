@@ -26,7 +26,7 @@ namespace Launcher
 
         private void frmMain_Load( object sender, EventArgs e )
         {
-            Globals.CheckUpdatesForm.ShowDialog( this );
+            // Globals.CheckUpdatesForm.ShowDialog( this );
             RefreshProcessList();
         }
 
@@ -66,6 +66,9 @@ namespace Launcher
         }
         #endregion
 
+        /// <summary>
+        /// Refreshes the process list.
+        /// </summary>
         private void RefreshProcessList()
         {
             ProcessList.Clear();
@@ -101,6 +104,9 @@ namespace Launcher
             }
         }
 
+        /// <summary>
+        /// Injects or ejects the hack from the selected process.
+        /// </summary>
         private void ToggleInjectionCurrentProcess()
         {
             if( lstProcesses.SelectedItems.Count != 1 )
@@ -112,6 +118,9 @@ namespace Launcher
                 EjectCurrentProcess();
         }
 
+        /// <summary>
+        /// Injects the hack into the selected process.
+        /// </summary>
         private void InjectCurrentProcess()
         {
             if( lstProcesses.SelectedItems.Count != 1 || lstProcesses.SelectedItems[0].SubItems[3].Text != "No" )
@@ -121,6 +130,9 @@ namespace Launcher
                 lstProcesses.SelectedItems[0].SubItems[3].Text = "Yes";
         }
 
+        /// <summary>
+        /// Ejects the hack from the selected process.
+        /// </summary>
         private void EjectCurrentProcess()
         {
             if( lstProcesses.SelectedItems.Count != 1 || lstProcesses.SelectedItems[0].SubItems[3].Text != "Yes" )
@@ -130,6 +142,9 @@ namespace Launcher
                 lstProcesses.SelectedItems[0].SubItems[3].Text = "No";
         }
 
+        /// <summary>
+        /// Injects the hack into a specified process.
+        /// </summary>
         private bool InjectProcess( Process pProcess )
         {
             if( !File.Exists( Globals.ModulePath ) )
@@ -150,6 +165,9 @@ namespace Launcher
             return dwResult != 0;
         }
 
+        /// <summary>
+        /// Ejects the hack from a specified process.
+        /// </summary>
         private bool EjectProcess( Process pProcess )
         {
             return false;

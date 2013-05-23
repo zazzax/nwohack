@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Launcher
 {
-    static class Program
+    public static class Program
     {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,5 +16,6 @@ namespace Launcher
             Application.SetCompatibleTextRenderingDefault( false );
             Application.Run( new frmMain() );
         }
+
     }
 }
