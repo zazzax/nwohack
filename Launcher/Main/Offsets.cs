@@ -12,8 +12,8 @@ namespace Launcher
         public static class General
         {
             public static DWORD_PTR
-                IsInGame                            = 0x0225B500,
-                PlayerName                          = 0x022219EC;
+                IsInGame                            = 0x0225C680,
+                PlayerName                          = 0x02222B6C;
         }
 
     }
