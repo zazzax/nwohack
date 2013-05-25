@@ -13,7 +13,7 @@ namespace Launcher
 
         private void frmAbout_Load( object sender, EventArgs e )
         {
-            lblVersion.Text = ":: Version " + Application.ProductVersion + " ::";
+            lblVersion.Text = ":: Version " + Globals.CurrentVersion + " ::";
         }
 
     }
