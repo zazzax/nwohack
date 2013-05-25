@@ -26,7 +26,9 @@ namespace Launcher
 
         private void frmMain_Load( object sender, EventArgs e )
         {
-            // Globals.CheckUpdatesForm.ShowDialog( this );
+            Globals.CheckUpdatesForm.CheckUpdates();
+            Globals.CheckUpdatesForm.ShowDialog( this );
+
             RefreshProcessList();
         }
 
@@ -57,6 +59,8 @@ namespace Launcher
 
         private void menuOptions_Help_About_Click( object sender, EventArgs e )
         {
+            Globals.CheckUpdatesForm.ResetDownloadQueue();
+            Globals.CheckUpdatesForm.CheckUpdates();
             Globals.AboutForm.ShowDialog( this );
         }
 
@@ -79,6 +83,10 @@ namespace Launcher
                 string sPID = pProcess.Id.ToString();
                 ProcessList.Add( sPID, pProcess );
 
+                string sMD5Hash = Functions.MD5( pProcess.MainModule.FileName );
+                string sGameVersion = Globals.ClientHashes.ContainsKey( sMD5Hash ) ?
+                    Globals.ClientHashes[sMD5Hash] : "Unknown";
+
                 IntPtr hProcess = Memory.OpenProcess( pProcess.Id );
                 DWORD_PTR dwBase = (DWORD_PTR) pProcess.MainModule.BaseAddress;
 
@@ -98,7 +106,7 @@ namespace Launcher
                 }
 
                 ListViewItem pListItem = lstProcesses.Items.Add( sPID );
-                pListItem.SubItems.Add( "GameClient.exe" );
+                pListItem.SubItems.Add( sGameVersion );
                 pListItem.SubItems.Add( sPlayerName );
                 pListItem.SubItems.Add( bIsInjected ? "Yes" : "No" );
             }
@@ -125,6 +133,13 @@ namespace Launcher
         {
             if( lstProcesses.SelectedItems.Count != 1 || lstProcesses.SelectedItems[0].SubItems[3].Text != "No" )
                 return;
+
+            if( lstProcesses.SelectedItems[0].SubItems[1].Text != Globals.GameVersion )
+            {
+                MessageBox.Show( "This game version is not yet supported! Please check for updates periodically.",
+                                    "Unsupported version", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                return;
+            }
 
             if( InjectProcess( ProcessList[lstProcesses.SelectedItems[0].Text] ) )
                 lstProcesses.SelectedItems[0].SubItems[3].Text = "Yes";

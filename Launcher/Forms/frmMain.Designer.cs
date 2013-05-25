@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lstProcesses = new System.Windows.Forms.ListView();
             this.colProcessId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colProcessName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colGameVersion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPlayerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colInjected = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuOptions = new System.Windows.Forms.MenuStrip();
@@ -39,12 +39,12 @@
             this.menuOptions_File_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions_Tools_Inject = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOptions_Tools_Eject = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOptions_Tools_Seperator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuOptions_Tools_Refresh = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions_Help_CheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions_Help_About = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOptions_Tools_Eject = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOptions_Tools_Seperator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.lstProcesses.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.lstProcesses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colProcessId,
-            this.colProcessName,
+            this.colGameVersion,
             this.colPlayerName,
             this.colInjected});
             this.lstProcesses.FullRowSelect = true;
@@ -73,10 +73,10 @@
             this.colProcessId.Text = "Process ID";
             this.colProcessId.Width = 84;
             // 
-            // colProcessName
+            // colGameVersion
             // 
-            this.colProcessName.Text = "Process Name";
-            this.colProcessName.Width = 124;
+            this.colGameVersion.Text = "Game Version";
+            this.colGameVersion.Width = 124;
             // 
             // colPlayerName
             // 
@@ -112,7 +112,7 @@
             // 
             this.menuOptions_File_Exit.Name = "menuOptions_File_Exit";
             this.menuOptions_File_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuOptions_File_Exit.Size = new System.Drawing.Size(152, 22);
+            this.menuOptions_File_Exit.Size = new System.Drawing.Size(134, 22);
             this.menuOptions_File_Exit.Text = "Exit";
             this.menuOptions_File_Exit.Click += new System.EventHandler(this.menuOptions_File_Exit_Click);
             // 
@@ -134,6 +134,19 @@
             this.menuOptions_Tools_Inject.Size = new System.Drawing.Size(186, 22);
             this.menuOptions_Tools_Inject.Text = "Inject";
             this.menuOptions_Tools_Inject.Click += new System.EventHandler(this.menuOptions_Tools_Inject_Click);
+            // 
+            // menuOptions_Tools_Eject
+            // 
+            this.menuOptions_Tools_Eject.Name = "menuOptions_Tools_Eject";
+            this.menuOptions_Tools_Eject.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.menuOptions_Tools_Eject.Size = new System.Drawing.Size(186, 22);
+            this.menuOptions_Tools_Eject.Text = "Eject";
+            this.menuOptions_Tools_Eject.Click += new System.EventHandler(this.menuOptions_Tools_Eject_Click);
+            // 
+            // menuOptions_Tools_Seperator1
+            // 
+            this.menuOptions_Tools_Seperator1.Name = "menuOptions_Tools_Seperator1";
+            this.menuOptions_Tools_Seperator1.Size = new System.Drawing.Size(183, 6);
             // 
             // menuOptions_Tools_Refresh
             // 
@@ -166,19 +179,6 @@
             this.menuOptions_Help_About.Text = "About NWOHack";
             this.menuOptions_Help_About.Click += new System.EventHandler(this.menuOptions_Help_About_Click);
             // 
-            // menuOptions_Tools_Eject
-            // 
-            this.menuOptions_Tools_Eject.Name = "menuOptions_Tools_Eject";
-            this.menuOptions_Tools_Eject.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.menuOptions_Tools_Eject.Size = new System.Drawing.Size(186, 22);
-            this.menuOptions_Tools_Eject.Text = "Eject";
-            this.menuOptions_Tools_Eject.Click += new System.EventHandler(this.menuOptions_Tools_Eject_Click);
-            // 
-            // menuOptions_Tools_Seperator1
-            // 
-            this.menuOptions_Tools_Seperator1.Name = "menuOptions_Tools_Seperator1";
-            this.menuOptions_Tools_Seperator1.Size = new System.Drawing.Size(183, 6);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -205,7 +205,7 @@
 
         private System.Windows.Forms.ListView lstProcesses;
         private System.Windows.Forms.ColumnHeader colProcessId;
-        private System.Windows.Forms.ColumnHeader colProcessName;
+        private System.Windows.Forms.ColumnHeader colGameVersion;
         private System.Windows.Forms.ColumnHeader colPlayerName;
         private System.Windows.Forms.ColumnHeader colInjected;
         private System.Windows.Forms.MenuStrip menuOptions;

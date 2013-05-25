@@ -65,7 +65,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <Version>1.0.0.1</Version>
+      <Version>
+      </Version>
       <ManifestFile>$(SolutionDir)Build\$(Configuration)\$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
     </Link>
     <BuildLog>

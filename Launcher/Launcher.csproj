@@ -73,6 +73,7 @@
     <Compile Include="Main\Offsets.cs" />
     <Compile Include="Main\Program.cs" />
     <Compile Include="Main\Functions.cs" />
+    <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Globals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmAbout.resx">
