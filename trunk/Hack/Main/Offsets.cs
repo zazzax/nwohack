@@ -12,23 +12,23 @@ namespace Hack
         public static class EntityManager
         {
             public static DWORD_PTR
-                MainEntityList                      = 0x022323E0,
-                EntityUtil_EntGetTarget             = 0x00623DA0,
-                EntityUtil_GetEntNameToFit          = 0x002E9E70,
-                EntityUtil_GetPlayerEnt             = 0x002B5940;
+                MainEntityList                      = 0x02233560,
+                EntityUtil_EntGetTarget             = 0x00625130,
+                EntityUtil_GetEntNameToFit          = 0x002E9CA0,
+                EntityUtil_GetPlayerEnt             = 0x002B58E0;
         }
 
         public static class Functions
         {
             public static DWORD_PTR
-                UIGen_Chat_AddMessage               = 0x00668B90,
-                UIGen_Chat_PrepareMessage           = 0x004B4B80;
+                UIGen_Chat_AddMessage               = 0x0066A010,
+                UIGen_Chat_PrepareMessage           = 0x004B5C10;
         }
 
         public static class Patches
         {
             public static DWORD_PTR
-                NoStamina                           = 0x0050D3CC;
+                NoStamina                           = 0x0050E26C;
         }
 
         public static void Initialize()
