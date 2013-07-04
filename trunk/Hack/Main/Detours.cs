@@ -1,6 +1,6 @@
-﻿#if WIN32
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
+
+#if WIN32
 using DWORD_PTR = System.UInt32;
 #elif WIN64
 using DWORD_PTR = System.UInt64;
