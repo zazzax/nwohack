@@ -12,7 +12,7 @@ namespace Launcher
 
         public static readonly Dictionary<string, string> ClientHashes = new Dictionary<string, string>();
 
-        public static readonly string GameVersion = "1.20130416a.39";
+        public static readonly string GameVersion = "1.20130529g.33";
         public static readonly string CurrentVersion = Application.ProductVersion;
         public static readonly string StartupPath = Application.StartupPath;
         public static readonly string TempPath = Environment.GetEnvironmentVariable( "TEMP" ) + "\\NWOHack";
